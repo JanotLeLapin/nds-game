@@ -1,28 +1,22 @@
 #include <nds.h>
 
+#include "game.hpp"
+
 int main(void)
 {
-  int i = 0;
   int angle = 0;
 
-  videoSetMode(MODE_0_2D);
+  Game game = Game();
 
-  vramSetBankA(VRAM_A_MAIN_SPRITE);
-
-  oamInit(&oamMain, SpriteMapping_1D_32, false);
-
-  u16 *gfx = oamAllocateGfx(&oamMain, SpriteSize_32x32, SpriteColorFormat_256Color);
-
-  for (i = 0; i < 32 * 32 / 2; i++)
+  for (int i = 0; i < 32 * 32 / 2; i++)
   {
-    gfx[i] = 1 | (1 << 8);
+    game.getGfx()[i] = 1 | (1 << 8);
   }
 
   SPRITE_PALETTE[1] = RGB15(31, 0, 0);
 
-  while (1)
+  while (true)
   {
-
     scanKeys();
 
     int held = keysHeld();
@@ -52,12 +46,12 @@ int main(void)
            0,                //this is the palette index if multiple palettes or the alpha value if bmp sprite
            SpriteSize_32x32,
            SpriteColorFormat_256Color,
-           gfx,          //pointer to the loaded graphics
-           0,            //sprite rotation/scale matrix index
-           true,         //double the size when rotating?
-           false,        //hide the sprite?
-           false, false, //vflip, hflip
-           false         //apply mosaic
+           game.getGfx(), //pointer to the loaded graphics
+           0,             //sprite rotation/scale matrix index
+           true,          //double the size when rotating?
+           false,         //hide the sprite?
+           false, false,  //vflip, hflip
+           false          //apply mosaic
     );
 
     //-------------------------------------------------------------------------
@@ -71,16 +65,15 @@ int main(void)
            0,        //this is the palette index if multiple palettes or the alpha value if bmp sprite
            SpriteSize_32x32,
            SpriteColorFormat_256Color,
-           gfx,          //pointer to the loaded graphics
-           0,            //sprite rotation/scale matrix index
-           false,        //double the size when rotating?
-           false,        //hide the sprite?
-           false, false, //vflip, hflip
-           false         //apply mosaic
+           game.getGfx(), //pointer to the loaded graphics
+           0,             //sprite rotation/scale matrix index
+           false,         //double the size when rotating?
+           false,         //hide the sprite?
+           false, false,  //vflip, hflip
+           false          //apply mosaic
     );
     swiWaitForVBlank();
-
-    oamUpdate(&oamMain);
+    game.update();
   }
 
   return 0;
