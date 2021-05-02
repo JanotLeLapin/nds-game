@@ -14,18 +14,15 @@ Entity::Entity(int x, int y, bool rigid, int colorIndex)
 
 void Entity::update()
 {
-  if (m_Rigid && m_Y + m_Acc < SCREEN_HEIGHT - 16)
+  if (!m_Rigid)
+    return;
+  if (m_Y + m_Acc < SCREEN_HEIGHT - 16)
   {
     m_Y += m_Acc;
     m_Acc++;
   }
-  else if (m_Y + m_Acc > SCREEN_WIDTH - 16)
-  {
-    m_Acc = SCREEN_WIDTH - m_Y;
-    printf("\nacc: %d, y: %d", m_Acc, m_Y);
-  }
   else
   {
-    m_Acc = 1;
+    m_Acc = 0;
   }
 }
