@@ -15,7 +15,7 @@ Entity::Entity(int x, int y, bool rigid, int colorIndex)
 
 void Entity::update()
 {
-  if (m_Rigid || m_Frozen)
+  if (!m_Rigid || m_Frozen)
     return;
   if (m_Y + m_Acc < SCREEN_HEIGHT - 16)
   {
