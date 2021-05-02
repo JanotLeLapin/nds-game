@@ -8,11 +8,20 @@ private:
 
 public:
   Entity(int x, int y, bool rigid, int colorIndex);
+  /**
+   * Should be runned at each frame.
+   */
   void update();
 
   inline int getX() { return m_X; };
   inline int getY() { return m_Y; };
+  /**
+   * @returns The acceleration of the Entity.
+   */
   inline int getAcc() { return m_Acc; };
+  /**
+   * @returns The palette color index of the Entity.
+   */
   inline int getColorIndex() { return m_ColorIndex; };
   inline bool isRigid() { return m_Rigid; };
   inline bool isFrozen() { return m_Frozen; };

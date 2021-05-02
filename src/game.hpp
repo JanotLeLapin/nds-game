@@ -13,9 +13,21 @@ private:
 
 public:
   Game();
+  /**
+   * Should be runned at each frame.
+   */
   void update();
+  /**
+   * Adds a new Entity.
+   */
   void addEntity(Entity *entity);
 
+  /**
+   * @returns the main graphics.
+   */
   inline u16 *getGfx() { return m_Gfx; };
+  /**
+   * @returns an array of Entities.
+   */
   inline std::vector<Entity *> getEntities() { return m_Entities; };
 };
