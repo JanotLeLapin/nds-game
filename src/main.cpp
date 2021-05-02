@@ -2,10 +2,12 @@
 #include <cstdio>
 
 #include "game.hpp"
+#include "entity.hpp"
 
 int main(void)
 {
   int angle = 0;
+  touchPosition touch;
 
   PrintConsole *console = consoleDemoInit();
   consoleSetWindow(console, 15, 1, 12, 16);
@@ -13,10 +15,13 @@ int main(void)
 
   Game game = Game();
 
-  for (int i = 0; i < 32 * 32 / 2; i++)
-  {
-    game.getGfx()[i] = 1 | (1 << 8);
-  }
+  Entity eRigid(20, 20, true, 0);
+  Entity eStatic(SCREEN_WIDTH - 20, 20, false, 1);
+  Entity eMovable(80, 20, false, 1);
+
+  game.addEntity(&eRigid);
+  game.addEntity(&eStatic);
+  game.addEntity(&eMovable);
 
   SPRITE_PALETTE[1] = RGB15(31, 0, 0);
 
@@ -28,6 +33,12 @@ int main(void)
 
     if (held & KEY_START)
       break;
+    if (held & KEY_TOUCH)
+    {
+      touchRead(&touch);
+      eMovable.setX(touch.px);
+      eMovable.setY(touch.py);
+    }
     if (held & KEY_LEFT)
       angle += degreesToAngle(4);
     if (held & KEY_RIGHT)
