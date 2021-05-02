@@ -24,6 +24,7 @@ void Entity::update()
   }
   else
   {
+    m_Y = SCREEN_HEIGHT - 16;
     m_Acc = 0;
   }
 }
