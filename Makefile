@@ -20,6 +20,8 @@ BUILD		:=	build
 SOURCES		:=	src
 DATA		:=	data
 INCLUDES	:=	include
+GAME_TITLE := Cool NDS
+GAME_SUBTITLE := github.com/JanotLeLapin
 
 #---------------------------------------------------------------------------------
 # options for code generation
