@@ -36,8 +36,13 @@ int main(void)
     if (held & KEY_TOUCH)
     {
       touchRead(&touch);
+      eMovable.setFrozen(true);
       eMovable.setX(touch.px);
       eMovable.setY(touch.py);
+    }
+    else
+    {
+      eMovable.setFrozen(false);
     }
     if (held & KEY_LEFT)
       angle += degreesToAngle(4);
