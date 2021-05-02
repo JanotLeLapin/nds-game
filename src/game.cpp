@@ -9,6 +9,11 @@ Game::Game()
   oamInit(&oamMain, SpriteMapping_1D_32, false);
 
   m_Gfx = oamAllocateGfx(&oamMain, SpriteSize_32x32, SpriteColorFormat_256Color);
+
+  for (int i = 0; i < 32 * 32 / 2; i++)
+  {
+    m_Gfx[i] = 1 | (1 << 8);
+  }
 }
 
 void Game::update()
