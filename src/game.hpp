@@ -1,4 +1,7 @@
+#pragma once
+
 #include <nds.h>
+#include <vector>
 
 #include "entity.hpp"
 
