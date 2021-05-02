@@ -1,10 +1,15 @@
 #include <nds.h>
+#include <cstdio>
 
 #include "game.hpp"
 
 int main(void)
 {
   int angle = 0;
+
+  PrintConsole *console = consoleDemoInit();
+  consoleSetWindow(console, 15, 1, 12, 16);
+  consoleSelect(console);
 
   Game game = Game();
 
