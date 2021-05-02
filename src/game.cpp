@@ -18,7 +18,7 @@ Game::Game()
 
 void Game::update()
 {
-  for (int i = 0; i < m_Entities.size(); i++)
+  for (unsigned int i = 0; i < m_Entities.size(); i++)
   {
     // Update Entity
     m_Entities[i]->update();
