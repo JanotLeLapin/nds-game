@@ -3,7 +3,7 @@
 #include <nds.h>
 #include <vector>
 
-#include "entity.hpp"
+#include "entity/entity.hpp"
 
 class Game
 {

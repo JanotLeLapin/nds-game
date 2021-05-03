@@ -2,7 +2,7 @@
 #include <cstdio>
 
 #include "game.hpp"
-#include "entity.hpp"
+#include "entity/entity.hpp"
 
 int main(void)
 {
