@@ -2,7 +2,7 @@
 
 class Entity
 {
-private:
+protected:
   int m_X, m_Y, m_Acc, m_ColorIndex;
   bool m_Frozen;
 
