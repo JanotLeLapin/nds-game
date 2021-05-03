@@ -50,15 +50,6 @@ int main(void)
     if (held & KEY_RIGHT)
       angle -= degreesToAngle(1);
 
-    //-------------------------------------------------------------------------
-    // Set the first rotation/scale matrix
-    //
-    // There are 32 rotation/scale matricies that can store sprite rotations
-    // Any number of sprites can share a sprite rotation matrix or each sprite
-    // (up to 32) can utilize a seperate rotation. Because this sprite is doubled
-    // in size we have to adjust its position by subtracting half of its height and
-    // width (20 - 16, 20 - 16, )
-    //-------------------------------------------------------------------------
     oamRotateScale(&oamMain, 0, angle, intToFixed(1, 8), intToFixed(1, 8));
 
     game.update();
