@@ -3,7 +3,7 @@
 class Entity
 {
 protected:
-  int m_X, m_Y, m_Acc, m_ColorIndex;
+  int m_X, m_Y, m_ColorIndex;
   bool m_Frozen;
 
 public:
@@ -21,10 +21,6 @@ public:
 
   inline int getX() { return m_X; };
   inline int getY() { return m_Y; };
-  /**
-   * @returns The acceleration of the Entity.
-   */
-  inline int getAcc() { return m_Acc; };
   /**
    * @returns The palette color index of the Entity.
    */

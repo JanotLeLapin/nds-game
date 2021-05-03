@@ -5,7 +5,7 @@
 class Rigid : public Entity
 {
 protected:
-  int m_Weight;
+  int m_Weight, m_Acc;
 
 public:
   /**
@@ -20,4 +20,8 @@ public:
   void update() override;
 
   inline int getWeight() { return m_Weight; };
+  /**
+   * @returns The acceleration of the RigidBody.
+   */
+  inline int getAcc() { return m_Acc; };
 };
