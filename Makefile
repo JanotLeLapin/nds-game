@@ -17,7 +17,7 @@ include $(DEVKITARM)/ds_rules
 #---------------------------------------------------------------------------------
 TARGET		:=	$(shell basename $(CURDIR))
 BUILD		:=	build
-SOURCES		:=	src
+SOURCES		:=	src src/entity
 DATA		:=	data
 INCLUDES	:=	include
 GAME_TITLE := Cool NDS
