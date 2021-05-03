@@ -3,6 +3,7 @@
 
 #include "game.hpp"
 #include "entity/entity.hpp"
+#include "entity/rigid.hpp"
 
 int main(void)
 {
@@ -15,13 +16,13 @@ int main(void)
 
   Game game = Game();
 
-  Entity eRigid(20, 20, true, 0);
-  Entity eStatic(SCREEN_WIDTH - 20, 20, false, 1);
-  Entity eMovable(80, 20, false, 1);
+  Entity eRigid(20, 20, 0);
+  Entity eStatic(SCREEN_WIDTH - 20, 20, 1);
+  Rigid rigidBody(120, 20, 1, 1);
 
   game.addEntity(&eRigid);
   game.addEntity(&eStatic);
-  game.addEntity(&eMovable);
+  game.addEntity(&rigidBody);
 
   SPRITE_PALETTE[1] = RGB15(31, 0, 0);
 
@@ -36,13 +37,13 @@ int main(void)
     if (held & KEY_TOUCH)
     {
       touchRead(&touch);
-      eMovable.setFrozen(true);
-      eMovable.setX(touch.px);
-      eMovable.setY(touch.py);
+      rigidBody.setFrozen(true);
+      rigidBody.setX(touch.px);
+      rigidBody.setY(touch.py);
     }
     else
     {
-      eMovable.setFrozen(false);
+      rigidBody.setFrozen(false);
     }
     if (held & KEY_LEFT)
       angle += degreesToAngle(4);
