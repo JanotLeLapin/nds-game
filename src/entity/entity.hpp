@@ -7,7 +7,13 @@ protected:
   bool m_Frozen;
 
 public:
-  Entity(int x, int y, bool rigid, int colorIndex);
+  /**
+   * An Entity
+   * @param x The x coordinate of the Entity
+   * @param y The y coordinate of the Entity
+   * @param colorIndex The palette color index of the Entity
+   */
+  Entity(int x, int y, int colorIndex);
   /**
    * Should be runned at each frame.
    */
