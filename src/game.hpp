@@ -13,6 +13,14 @@ private:
 
 public:
   Game();
+
+  /**
+   * Sets a color on the palette.
+   * @param i The index of the color
+   * @param color The RGB15 color value
+   */
+  static void setColor(int i, int color);
+
   /**
    * Should be runned at each frame.
    */

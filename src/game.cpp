@@ -6,7 +6,7 @@ Game::Game()
 {
   videoSetMode(MODE_0_2D);
   vramSetBankA(VRAM_A_MAIN_SPRITE);
-  oamInit(&oamMain, SpriteMapping_1D_32, false);
+  oamInit(&oamMain, SpriteMapping_1D_32, true);
 
   m_Gfx = oamAllocateGfx(&oamMain, SpriteSize_32x32, SpriteColorFormat_256Color);
 
@@ -14,6 +14,15 @@ Game::Game()
   {
     m_Gfx[i] = 1 | (1 << 8);
   }
+}
+
+void Game::setColor(int i, int color)
+{
+  vramSetBankF(VRAM_F_LCD);
+
+  VRAM_F_EXT_SPR_PALETTE[i][1] = color;
+
+  vramSetBankF(VRAM_F_SPRITE_EXT_PALETTE);
 }
 
 void Game::update()

@@ -18,13 +18,15 @@ int main(void)
 
   Entity eRigid(20, 20, 0);
   Entity eStatic(SCREEN_WIDTH - 20, 20, 1);
-  Rigid rigidBody(120, 20, 1, 1);
+  Rigid rigidBody(120, 20, 1, 2);
 
   game.addEntity(&eRigid);
   game.addEntity(&eStatic);
   game.addEntity(&rigidBody);
 
-  SPRITE_PALETTE[1] = RGB15(31, 0, 0);
+  Game::setColor(0, RGB15(31, 0, 0));
+  Game::setColor(1, RGB15(0, 31, 0));
+  Game::setColor(2, RGB15(0, 0, 31));
 
   while (true)
   {
