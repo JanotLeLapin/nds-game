@@ -47,10 +47,6 @@ int main(void)
     {
       rigidBody.setFrozen(false);
     }
-    if (held & KEY_LEFT)
-      angle += degreesToAngle(4);
-    if (held & KEY_RIGHT)
-      angle -= degreesToAngle(1);
 
     oamRotateScale(&oamMain, 0, angle, intToFixed(1, 8), intToFixed(1, 8));
 
