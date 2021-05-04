@@ -1,9 +1,9 @@
 #include <nds.h>
-#include <cstdio>
 
 #include "game.hpp"
 #include "entity/entity.hpp"
 #include "entity/rigid.hpp"
+#include "entity/player.hpp"
 
 int main(void)
 {
@@ -16,17 +16,14 @@ int main(void)
 
   Game game = Game();
 
-  Entity eRigid(20, 20, 0);
-  Entity eStatic(SCREEN_WIDTH - 20, 20, 1);
-  Rigid rigidBody(120, 20, 1, 2);
+  Rigid rigidBody(20, 20, 1, 0);
+  Player player(SCREEN_WIDTH - 20, 20, 1, 1);
 
-  game.addEntity(&eRigid);
-  game.addEntity(&eStatic);
   game.addEntity(&rigidBody);
+  game.addEntity(&player);
 
   Game::setColor(0, RGB15(31, 0, 0));
-  Game::setColor(1, RGB15(0, 31, 0));
-  Game::setColor(2, RGB15(0, 0, 31));
+  Game::setColor(1, RGB15(0, 12, 21));
 
   while (true)
   {
@@ -47,6 +44,12 @@ int main(void)
     {
       rigidBody.setFrozen(false);
     }
+    if (held & KEY_LEFT)
+      player.setX(player.getX() - 4);
+    if (held & KEY_RIGHT)
+      player.setX(player.getX() + 4);
+    if (held & KEY_B || held & KEY_A || held & KEY_UP)
+      player.jump(4);
 
     oamRotateScale(&oamMain, 0, angle, intToFixed(1, 8), intToFixed(1, 8));
 
